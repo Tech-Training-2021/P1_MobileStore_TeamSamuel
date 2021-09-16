@@ -27,5 +27,17 @@ namespace Web.Controllers
             }
             return View(data);
         }
+
+        public ActionResult GetCustomerById(int id)
+        {
+            var customer = repo.GetCustomerById(id);
+            return View(Mapper.Map(customer));
+        }
+
+        public ActionResult EditCustomer(int id)
+        {
+            var customer = repo.UpdateCustomer(id);
+            return View(Mapper.Map(customer));
+        }
     }
 }

@@ -22,5 +22,41 @@ namespace Data
             return db.Customers
                     .ToList();
         }
+        public Customer GetCustomerById(int id)
+        {
+            if (id > 0)
+            {
+                var customer = db.Customers
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
+                if (customer != null)
+                    return customer;
+                else
+                    return null;
+            }
+            else
+            {
+                throw new ArgumentException("Id cannot be less than 0");
+            }
+        }
+
+        public Customer UpdateCustomer(int id)
+        {
+            var customer = db.Customers.Find(id);
+            if (customer != null)
+            {
+                db.Customers.AddOrUpdate(customer);
+                Save();
+            }
+            else
+                throw new ArgumentException("Customer not found");
+
+            return customer;
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
     }
 }
