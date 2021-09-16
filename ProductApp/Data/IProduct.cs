@@ -10,10 +10,9 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-
-    interface ICustomerRepository
+    interface IProduct
     {
-        IEnumerable<Customer> GetCustomers();
-        Customer GetCustomerById(int id);
+        IEnumerable<Product> GetProducts();
+        Product GetProductById(int P_id);
     }
 }

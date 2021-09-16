@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class CustomerRepository : ICustomerRepository
+    public class ProductRepository : IProduct
     {
         private ProductModel db;
-        public CustomerRepository(ProductModel db)
+        public ProductRepository(ProductModel db)
         {
             this.db = db;
         }
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<Product> GetProducts()
         {
-            return db.Customers
+            return db.Products
                     .ToList();
         }
-        public Customer GetCustomerById(int id)
+        public Product GetProductById(int id)
         {
             if (id > 0)
             {
-                var customer = db.Customers
-                    .Where(c => c.Id == id)
+                var prod = db.Products
+                    .Where(c => c.P_id == id)
                     .FirstOrDefault();
-                if (customer != null)
-                    return customer;
+                if (prod != null)
+                    return prod;
                 else
                     return null;
             }

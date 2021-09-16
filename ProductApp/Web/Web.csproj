@@ -128,12 +128,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProdController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Mapper.cs" />
+    <Compile Include="Models\Prod.cs" />
+    <Compile Include="Models\ProdMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +178,8 @@
     <Content Include="Views\Product\GetCustomer.cshtml" />
     <Content Include="Views\Product\GetCustomerById.cshtml" />
     <Content Include="Views\Product\EditCustomer.cshtml" />
+    <Content Include="Views\Prod\GetProducts.cshtml" />
+    <Content Include="Views\Prod\GetProductById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
