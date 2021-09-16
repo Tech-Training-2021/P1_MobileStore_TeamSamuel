@@ -1,0 +1,34 @@
+﻿
+@model dynamic
+    @{
+    ViewBag.Title = "GetCustomer";
+}
+
+<h2>All Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>FName</th>
+            <th>LName</th>
+            <th>Dob</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Locations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customers in Model)
+        {
+        <tr>
+            <th scope="row">@customers.Id</th>
+            <td>@customers.F_Name</td>
+            <td>@customers.L_Name</td>
+            <td>@customers.Dob</td>
+            <td>@customers.Mobile</td>
+            <td>@customers.Email</td>
+            <td>@customers.Locations</td>
+        </tr>
+        }
+    </tbody>
+</table>
