@@ -134,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\Mapper.cs" />
     <Compile Include="Models\Prod.cs" />
     <Compile Include="Models\ProdMapper.cs" />
@@ -179,7 +180,7 @@
     <Content Include="Views\Product\GetCustomerById.cshtml" />
     <Content Include="Views\Prod\GetProducts.cshtml" />
     <Content Include="Views\Prod\GetProductById.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Createn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

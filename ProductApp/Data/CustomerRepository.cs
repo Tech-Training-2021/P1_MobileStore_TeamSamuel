@@ -17,9 +17,18 @@ namespace Data
         {
             this.db = db;
         }
-        public void AddCustomer(Customer customer)
+        public int AddCustomer(Customer customer)
         {
             db.Customers.Add(customer);
+            db.SaveChanges();
+            int id = customer.Id;
+            return id;
+            
+        }
+        public void AddCustomerL(Login lcustomer,int id)
+        {
+            lcustomer.C_Id = id;
+            db.Logins.Add(lcustomer);
             Save();
         }
         public IEnumerable<Customer> GetCustomers()

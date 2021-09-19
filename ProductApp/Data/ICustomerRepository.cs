@@ -15,7 +15,8 @@ namespace Data
     {
         IEnumerable<Customer> GetCustomers();
         Customer GetCustomerById(int? id);
-        void AddCustomer(Customer customer);
+        int AddCustomer(Customer customer);
+        void AddCustomerL(Login lcustomer,int id);
         void Save();
     }
 }
