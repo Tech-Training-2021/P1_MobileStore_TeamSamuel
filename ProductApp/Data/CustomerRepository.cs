@@ -17,12 +17,17 @@ namespace Data
         {
             this.db = db;
         }
+        public void AddCustomer(Customer customer)
+        {
+            db.Customers.Add(customer);
+            Save();
+        }
         public IEnumerable<Customer> GetCustomers()
         {
             return db.Customers
                     .ToList();
         }
-        public Customer GetCustomerById(int id)
+        public Customer GetCustomerById(int? id)
         {
             if (id > 0)
             {
@@ -38,6 +43,10 @@ namespace Data
             {
                 throw new ArgumentException("Id cannot be less than 0");
             }
+        }
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

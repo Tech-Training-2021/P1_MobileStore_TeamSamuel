@@ -14,6 +14,8 @@ namespace Data
     interface ICustomerRepository
     {
         IEnumerable<Customer> GetCustomers();
-        Customer GetCustomerById(int id);
+        Customer GetCustomerById(int? id);
+        void AddCustomer(Customer customer);
+        void Save();
     }
 }

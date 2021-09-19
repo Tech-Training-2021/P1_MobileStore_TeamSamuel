@@ -28,6 +28,7 @@
             <td>@customers.Mobile</td>
             <td>@customers.Email</td>
             <td>@customers.Locations</td>
+            <td>@Html.ActionLink("Details", "GetCustomerById", new { id = customers.Id })</td>
         </tr>
         }
     </tbody>

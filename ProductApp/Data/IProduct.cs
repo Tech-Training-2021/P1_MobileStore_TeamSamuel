@@ -13,6 +13,6 @@ namespace Data
     interface IProduct
     {
         IEnumerable<Product> GetProducts();
-        Product GetProductById(int P_id);
+        Product GetProductById(int? P_id);
     }
 }

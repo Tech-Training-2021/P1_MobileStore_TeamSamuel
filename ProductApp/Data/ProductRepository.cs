@@ -22,7 +22,7 @@ namespace Data
             return db.Products
                     .ToList();
         }
-        public Product GetProductById(int id)
+        public Product GetProductById(int? id)
         {
             if (id > 0)
             {

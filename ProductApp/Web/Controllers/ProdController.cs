@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Web.Models;
 using Data.Entities;
 using Data;
+using System.Net;
 
 namespace Web.Controllers
 {
@@ -29,9 +30,13 @@ namespace Web.Controllers
             return View(data);
         }
 
-        public ActionResult GetProductById(int id)
+        public ActionResult GetProductById(int? id)
         {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var product = repo.GetProductById(id);
+            if (product == null)
+                return HttpNotFound();
             return View(ProdMapper.Map(product));
         }
     }

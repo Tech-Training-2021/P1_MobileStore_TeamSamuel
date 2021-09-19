@@ -4,7 +4,7 @@
     ViewBag.Title = "GetProducts";
 }
 
-<h2>All Customers</h2>
+<h2>All Products</h2>
 <table class="table">
     <thead>
         <tr>
@@ -32,6 +32,7 @@
             <td>@products.M_Name</td>
             <td>@products.Locations</td>
             <td>@products.Store</td>
+            <td>@Html.ActionLink("Details", "GetProductById", new { id = products.P_id })</td>
 
         </tr>
         }

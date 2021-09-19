@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Web.Models;
 using Data.Entities;
 using Data;
+using System.Data;
+using Customer = Web.Models.Customer;
+using System.Net;
 
 namespace Web.Controllers
 {
@@ -28,9 +31,13 @@ namespace Web.Controllers
             return View(data);
         }
 
-        public ActionResult GetCustomerById(int id)
+        public ActionResult GetCustomerById(int? id)
         {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var customer = repo.GetCustomerById(id);
+            if (customer == null)
+                return HttpNotFound();
             return View(Mapper.Map(customer));
         }
     }

@@ -20,6 +20,5 @@ namespace Web.Models
                 Locations = customer.Locations,
             };
         }
-
     }
 }

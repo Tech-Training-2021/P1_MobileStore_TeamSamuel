@@ -177,9 +177,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\GetCustomer.cshtml" />
     <Content Include="Views\Product\GetCustomerById.cshtml" />
-    <Content Include="Views\Product\EditCustomer.cshtml" />
     <Content Include="Views\Prod\GetProducts.cshtml" />
     <Content Include="Views\Prod\GetProductById.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
