@@ -39,5 +39,59 @@ namespace Data
                 throw new ArgumentException("Id cannot be less than 0");
             }
         }
+        public int AddCompany(Company comp)
+        {
+            db.Companies.Add(comp);
+            db.SaveChanges();
+            int id = comp.CN_id;
+            return id;
+
+        }
+        public int AddStore(Store stor)
+        {
+            db.Stores.Add(stor);
+            db.SaveChanges();
+            int id = stor.S_id;
+            return id;
+
+        }
+        public void AddProduct(Product prod,int c_id,int s_id)
+        {
+            prod.CN_id = c_id;
+            prod.S_id = s_id;
+            db.Products.Add(prod);
+            db.SaveChanges();
+
+        }
+        public string DeleteProductById(int id)
+        {
+            Company delcomp= (from c in db.Companies
+                           where c.CN_id == id
+                           select c).FirstOrDefault();
+            int c_id = delcomp.CN_id;
+            var comp = db.Companies.Find(c_id);
+            Store delstor = (from c in db.Stores
+                               where c.S_id == id
+                               select c).FirstOrDefault();
+            int s_id = delstor.S_id;
+            var stor = db.Stores.Find(s_id);
+            var prod = db.Products.Find(id);
+            if (prod != null && comp != null && prod != null)
+            {
+                db.Products.Remove(prod);
+                Save();
+                db.Companies.Remove(comp);
+                Save();
+                db.Stores.Remove(stor);
+                Save();
+                return "Removed Sucessfully";
+            }
+            else
+                throw new ArgumentException("Customer not found");
+        }
+        public void Save()
+        {
+            db.SaveChanges();
+        }
     }
 }

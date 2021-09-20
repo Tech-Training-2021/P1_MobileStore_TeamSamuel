@@ -39,5 +39,25 @@ namespace Web.Controllers
                 return HttpNotFound();
             return View(ProdMapper.Map(product));
         }
+
+        public ActionResult Createp(Prod pro)
+        {
+            if (ModelState.IsValid)
+            {
+                int C_Id = repo.AddCompany(ProdMapper.Mapcomp(pro));
+                int S_Id = repo.AddStore(ProdMapper.Mapstor(pro));
+                repo.AddProduct(ProdMapper.Mapp(pro),C_Id,S_Id);
+                return RedirectToAction("GetProducts");
+            }
+
+            return View(pro);
+        }
+        public ActionResult DeleteProductById(int id)
+        {
+            var customer = repo.DeleteProductById(id);
+            if (customer == null)
+                return HttpNotFound();
+            return RedirectToAction("GetProducts");
+        }
     }
 }
