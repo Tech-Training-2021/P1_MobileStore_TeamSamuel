@@ -181,6 +181,7 @@
     <Content Include="Views\Prod\GetProducts.cshtml" />
     <Content Include="Views\Prod\GetProductById.cshtml" />
     <Content Include="Views\Product\Createn.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

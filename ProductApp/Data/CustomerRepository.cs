@@ -25,6 +25,41 @@ namespace Data
             return id;
             
         }
+        public string DeleteCustomerById(int id)
+        {
+            Login delog = (from c in db.Logins
+                              where c.C_Id == id
+                              select c).FirstOrDefault();
+            int fid = delog.Id;
+            var logn = db.Logins.Find(fid);
+            var cust = db.Customers.Find(id);
+            if (cust != null && logn != null)
+            {
+                db.Logins.Remove(logn);
+                Save();
+                db.Customers.Remove(cust);
+                Save();
+                return "Removed Sucessfully";
+            }
+            else
+                throw new ArgumentException("Customer not found");
+        }
+        public Customer UpdateCustomer(Customer cust)
+        {
+
+            Customer updatedCust = (from c in db.Customers
+                              where c.Id == cust.Id
+                              select c).FirstOrDefault();
+            updatedCust.F_Name = cust.F_Name;
+            updatedCust.L_Name = cust.L_Name;
+            updatedCust.Dob = cust.Dob;
+            updatedCust.Mobile = cust.Mobile;
+            updatedCust.Email = cust.Email;
+            updatedCust.Locations = cust.Locations;
+            Save();
+
+            return cust;
+        }
         public void AddCustomerL(Login lcustomer,int id)
         {
             lcustomer.C_Id = id;
