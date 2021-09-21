@@ -29,6 +29,16 @@ namespace Web.Controllers
             }
             return View(data);
         }
+        public ActionResult GetOrderHProducts()
+        {
+            var products = repo.GetOrderHProducts();
+            var data = new List<Web.Models.Orderhis>();
+            foreach (var c in products)
+            {
+                data.Add(ProdMapper.Map(c));
+            }
+            return View(data);
+        }
         public ActionResult GetCartProducts()
         {
             string UserName = Session["UserName"].ToString();

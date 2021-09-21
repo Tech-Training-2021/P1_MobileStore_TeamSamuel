@@ -78,8 +78,7 @@ namespace Data
         }
         public IEnumerable<Customer> GetCustomers()
         {
-            return db.Customers
-                    .ToList();
+            return db.Customers.OrderBy(a => a.F_Name).ToList();
         }
         public Customer GetCustomerById(int? id)
         {

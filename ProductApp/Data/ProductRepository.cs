@@ -21,8 +21,12 @@ namespace Data
         {
             var pids = (from c in db.Products
                         where c.Statuss == true
-                        select c).ToList();
+                        select c).OrderBy(a => a.Company.C_Name).ToList();
             return pids;
+        }
+        public IEnumerable<OrderH> GetOrderHProducts()
+        {
+            return db.OrderHs.OrderBy(a => a.UserName).ToList();
         }
         public IEnumerable<Product> GetCartProducts(string UserName)
         {
@@ -70,6 +74,7 @@ namespace Data
         {
             prod.CN_id = c_id;
             prod.S_id = s_id;
+            prod.Statuss = true;
             db.Products.Add(prod);
             db.SaveChanges();
 

@@ -13,6 +13,7 @@ namespace Data
     interface IProduct
     {
         IEnumerable<Product> GetProducts();
+        IEnumerable<OrderH> GetOrderHProducts();
         IEnumerable<Product> GetCartProducts(string UserName);
         Product GetProductById(int? P_id);
         void AddProduct(Product produc,int c_id,int s_id);

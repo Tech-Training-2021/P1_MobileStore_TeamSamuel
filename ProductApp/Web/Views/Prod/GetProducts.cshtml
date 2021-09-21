@@ -9,7 +9,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Company Name</th>
             <th>Mobile Name</th>
             <th>Ram</th>
@@ -24,8 +23,7 @@
         @foreach (var products in Model)
         {
         <tr>
-            <th scope="row">@products.P_id</th>
-            <td>@products.C_Name</td>
+            <th scope="row">@products.C_Name</th>
             <td>@products.M_Name</td>
             <td>@products.Ram</td>
             <td>@products.Storage</td>
