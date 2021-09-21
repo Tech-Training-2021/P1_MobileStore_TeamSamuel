@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Mapper.cs" />
     <Compile Include="Models\Prod.cs" />
     <Compile Include="Models\ProdMapper.cs" />
@@ -183,9 +184,14 @@
     <Content Include="Views\Product\Createn.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Prod\Createp.cshtml" />
+    <Content Include="Views\Product\Loginn.cshtml" />
+    <Content Include="Views\Prod\GetProductsCust.cshtml" />
+    <Content Include="Views\Product\profile.cshtml" />
+    <Content Include="Views\Product\Createreg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -60,6 +60,16 @@ namespace Data
 
             return cust;
         }
+        public bool CustomerLogin(Login customer)
+        {
+            Login Checkcust = (from c in db.Logins
+                                    where c.UserName == customer.UserName && c.Password == customer.Password
+                                    select c).FirstOrDefault();
+            if (Checkcust != null)
+                return true;
+            else
+                return false;
+        }
         public void AddCustomerL(Login lcustomer,int id)
         {
             lcustomer.C_Id = id;
@@ -88,6 +98,28 @@ namespace Data
                 throw new ArgumentException("Id cannot be less than 0");
             }
         }
+        public Customer GetProfile(string Username)
+        {
+            if (Username != null)
+            {
+                Login user = (from c in db.Logins
+                               where c.UserName == Username
+                               select c).FirstOrDefault();
+                int? fid = user.C_Id;
+                var customer = db.Customers
+                    .Where(c => c.Id == fid)
+                    .FirstOrDefault();
+                if (customer != null)
+                    return customer;
+                else
+                    return null;
+            }
+            else
+            {
+                throw new ArgumentException("Id cannot be less than 0");
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();

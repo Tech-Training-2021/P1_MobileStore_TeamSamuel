@@ -15,9 +15,12 @@ namespace Data
     {
         IEnumerable<Customer> GetCustomers();
         Customer GetCustomerById(int? id);
+        Customer GetProfile(string Username);
+
         string DeleteCustomerById(int id);
         Customer UpdateCustomer(Customer cust);
         int AddCustomer(Customer customer);
+        bool CustomerLogin(Login customer);
         void AddCustomerL(Login lcustomer,int id);
         void Save();
     }

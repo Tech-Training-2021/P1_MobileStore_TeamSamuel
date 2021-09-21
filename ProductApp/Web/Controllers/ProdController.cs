@@ -29,6 +29,16 @@ namespace Web.Controllers
             }
             return View(data);
         }
+        public ActionResult GetProductsCust()
+        {
+            var products = repo.GetProducts();
+            var data = new List<Web.Models.Prod>();
+            foreach (var c in products)
+            {
+                data.Add(ProdMapper.Map(c));
+            }
+            return View(data);
+        }
 
         public ActionResult GetProductById(int? id)
         {
@@ -39,6 +49,14 @@ namespace Web.Controllers
                 return HttpNotFound();
             return View(ProdMapper.Map(product));
         }
+
+        [HttpGet]
+        public ActionResult Createp()
+        {
+            return View();
+        }
+
+        [HttpPost]
 
         public ActionResult Createp(Prod pro)
         {
@@ -54,10 +72,16 @@ namespace Web.Controllers
         }
         public ActionResult DeleteProductById(int id)
         {
-            var customer = repo.DeleteProductById(id);
-            if (customer == null)
+            var prod = repo.DeleteProductById(id);
+            if (prod == null)
                 return HttpNotFound();
             return RedirectToAction("GetProducts");
+        }
+        public ActionResult AddCartProduct(int id)
+        {
+            string UserName = Session["UserName"].ToString();
+            repo.AddCartProduct(id,UserName);
+            return RedirectToAction("GetProductsCust");
         }
     }
 }

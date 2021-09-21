@@ -9,4 +9,3 @@ C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Data\obj\Debug\Data.csproj.Core
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Data\obj\Debug\Data.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Data\obj\Debug\Data.pdb
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Data\obj\Debug\Data.csproj.AssemblyReference.cache

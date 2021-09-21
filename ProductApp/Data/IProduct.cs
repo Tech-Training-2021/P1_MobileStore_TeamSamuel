@@ -15,6 +15,7 @@ namespace Data
         IEnumerable<Product> GetProducts();
         Product GetProductById(int? P_id);
         void AddProduct(Product produc,int c_id,int s_id);
+        void AddCartProduct(int id,string UserName);
         int AddCompany(Company comp);
         string DeleteProductById(int id);
         int AddStore(Store stor);

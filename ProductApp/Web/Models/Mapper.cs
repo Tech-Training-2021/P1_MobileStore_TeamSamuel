@@ -54,6 +54,14 @@ namespace Web.Models
                 Password = lcustomer.Password,
             };
         }
+        public static Data.Entities.Login Maploguser(Web.Models.LoginModel lcustomer)
+        {
+            return new Data.Entities.Login()
+            {
+                UserName = lcustomer.Username,
+                Password = lcustomer.Password,
+            };
+        }
         public static Web.Models.Customer MapCVM(Data.Entities.Customer customer)
         {
             return new Web.Models.Customer()

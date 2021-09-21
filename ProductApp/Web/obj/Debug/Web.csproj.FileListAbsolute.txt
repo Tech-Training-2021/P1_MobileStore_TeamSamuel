@@ -51,6 +51,9 @@ C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\roslyn\vbc.rsp
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Antlr3.Runtime.dll
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.dll
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.dll
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.SqlServer.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Newtonsoft.Json.dll
@@ -62,6 +65,10 @@ C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.WebPages.Dep
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.WebPages.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.WebPages.Razor.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\WebGrease.dll
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.pdb
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.dll.config
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.xml
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.SqlServer.xml
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.Helpers.xml
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.Mvc.xml
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.Optimization.xml
@@ -72,15 +79,8 @@ C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\System.Web.WebPages.Raz
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Newtonsoft.Json.xml
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Antlr3.Runtime.pdb
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.csproj.AssemblyReference.cache
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.csproj.CopyComplete
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.dll
 C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.pdb
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\obj\Debug\Web.csproj.AssemblyReference.cache
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.dll
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.dll
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.SqlServer.dll
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.pdb
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\Data.dll.config
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.xml
-C:\Users\Kajal Padhiyar\Documents\CCL\ProductApp\Web\bin\EntityFramework.SqlServer.xml

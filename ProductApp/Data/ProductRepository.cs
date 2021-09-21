@@ -63,6 +63,17 @@ namespace Data
             db.SaveChanges();
 
         }
+        public void AddCartProduct(int id,string UserName)
+        {
+            //Product pro = (from c in db.Products
+             //              where c.P_id == id
+               //            select c).FirstOrDefault();
+            Product p = new Product();
+            p.P_id = id;
+            //p.UserName=UserName;
+            db.Products.Add(p);
+            Save();
+        }
         public string DeleteProductById(int id)
         {
             Company delcomp= (from c in db.Companies

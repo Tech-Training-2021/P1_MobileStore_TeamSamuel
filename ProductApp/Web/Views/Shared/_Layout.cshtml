@@ -20,9 +20,45 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["UserName"] != null)
+                    {
+                        if (Session["UserName"].ToString() == "Admin")
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("View Customers", "GetCustomer", "Product")</li>
+                            <li>@Html.ActionLink("View Products", "GetProducts", "Prod")</li>
+                            <li>@Html.ActionLink("View orders", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>
+                                @Html.ActionLink(
+                                     $"{Session["UserName"]}","Index","Home")
+                            </li>
+                            <li>@Html.ActionLink("LogOut", "userLogout", "Product")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Profile", "profile", "Product")</li>
+                            <li>@Html.ActionLink("Book order", "GetProductsCust", "Prod")</li>
+                            <li>@Html.ActionLink("View Cart", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>
+                                @Html.ActionLink($"{Session["UserName"]}","Index","Home")
+                            </li>
+                            <li>@Html.ActionLink("LogOut", "userLogout", "Product")</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Register", "Createreg", "Product")</li>
+                        <li>@Html.ActionLink("Login", "Loginn", "Product")</li>
+
+                    }
                 </ul>
             </div>
         </div>
