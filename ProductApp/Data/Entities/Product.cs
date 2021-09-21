@@ -9,6 +9,13 @@ namespace Data.Entities
     [Table("Product")]
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            Carts = new HashSet<Cart>();
+            OrderHs = new HashSet<OrderH>();
+        }
+
         [Key]
         public int P_id { get; set; }
 
@@ -28,7 +35,13 @@ namespace Data.Entities
 
         public int? S_id { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
+
         public virtual Company Company { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderH> OrderHs { get; set; }
 
         public virtual Store Store { get; set; }
     }

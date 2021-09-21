@@ -55,9 +55,12 @@
   <ItemGroup>
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\abc.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Login.cs" />
+    <Compile Include="Entities\OrderH.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductModel.cs" />
     <Compile Include="Entities\Store.cs" />

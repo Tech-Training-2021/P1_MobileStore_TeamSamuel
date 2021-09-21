@@ -188,6 +188,8 @@
     <Content Include="Views\Prod\GetProductsCust.cshtml" />
     <Content Include="Views\Product\profile.cshtml" />
     <Content Include="Views\Product\Createreg.cshtml" />
+    <Content Include="Views\Prod\GetCartProducts.cshtml" />
+    <Content Include="Views\Prod\BuyProductById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

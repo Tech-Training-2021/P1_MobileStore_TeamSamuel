@@ -8,18 +8,29 @@ namespace Data.Entities
     public partial class ProductModel : DbContext
     {
         public ProductModel()
-            : base("name=ProductModel")
+            : base("name=ProductModel1")
         {
         }
 
+        public virtual DbSet<abc> abcs { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<OrderH> OrderHs { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<abc>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Company>()
                 .Property(e => e.C_Name)
                 .IsUnicode(false);
@@ -56,6 +67,10 @@ namespace Data.Entities
                 .HasMany(e => e.Logins)
                 .WithOptional(e => e.Customer)
                 .HasForeignKey(e => e.C_Id);
+
+            modelBuilder.Entity<OrderH>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Color)

@@ -29,6 +29,17 @@ namespace Web.Controllers
             }
             return View(data);
         }
+        public ActionResult GetCartProducts()
+        {
+            string UserName = Session["UserName"].ToString();
+            var carts = repo.GetCartProducts(UserName);
+            var data = new List<Web.Models.Prod>();
+            foreach (var c in carts)
+            {
+                data.Add(ProdMapper.Map(c));
+            }
+            return View(data);
+        }
         public ActionResult GetProductsCust()
         {
             var products = repo.GetProducts();
@@ -76,6 +87,29 @@ namespace Web.Controllers
             if (prod == null)
                 return HttpNotFound();
             return RedirectToAction("GetProducts");
+        }
+        public ActionResult DeleteCartProductById(int id)
+        {
+            var prod = repo.DeleteCartProductById(id);
+            if (prod == null)
+                return HttpNotFound();
+            return RedirectToAction("GetCartProducts");
+        }
+        public ActionResult BuyProductById(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var product = repo.GetProductById(id);
+            if (product == null)
+                return HttpNotFound();
+            return View(ProdMapper.Map(product));
+        }
+        public ActionResult Pay(int id)
+        {
+            string UserName = Session["UserName"].ToString();
+            repo.AddOrderProduct(id, UserName);
+            repo.DeleteCartProductById(id);
+            return RedirectToAction("GetProductsCust");
         }
         public ActionResult AddCartProduct(int id)
         {

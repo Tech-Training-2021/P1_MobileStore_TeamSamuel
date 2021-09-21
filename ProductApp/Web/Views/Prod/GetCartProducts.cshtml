@@ -1,0 +1,42 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "GetCartProducts";
+}
+
+<h2>All Products</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Company Name</th>
+            <th>Mobile Name</th>
+            <th>Ram</th>
+            <th>Storage</th>
+            <th>Color</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Store Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var products in Model)
+        {
+        <tr>
+            <th scope="row">@products.P_id</th>
+            <td>@products.C_Name</td>
+            <td>@products.M_Name</td>
+            <td>@products.Ram</td>
+            <td>@products.Storage</td>
+            <td>@products.Color</td>
+            <td>@products.Price</td>
+            <td>@products.Locations</td>
+            <td>@products.Store</td>
+            <td>@Html.ActionLink("Details", "GetProductById", new { id = products.P_id })</td>
+            <td>@Html.ActionLink("Buy Now", "BuyProductById", new { id = products.P_id })</td>
+            <td>@Html.ActionLink("Delete", "DeleteCartProductById", new { id = products.P_id })</td>
+
+        </tr>
+        }
+    </tbody>
+</table>

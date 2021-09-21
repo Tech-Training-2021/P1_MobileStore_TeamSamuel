@@ -19,8 +19,19 @@ namespace Data
         }
         public IEnumerable<Product> GetProducts()
         {
-            return db.Products
-                    .ToList();
+            var pids = (from c in db.Products
+                        where c.Statuss == true
+                        select c).ToList();
+            return pids;
+        }
+        public IEnumerable<Product> GetCartProducts(string UserName)
+        {
+            var pids = (from c in db.Carts
+                         where c.UserName == UserName
+                         select c.P_id).ToList();
+            var a = db.Products.Where(p => pids.Contains(p.P_id));
+            return a;
+
         }
         public Product GetProductById(int? id)
         {
@@ -65,15 +76,38 @@ namespace Data
         }
         public void AddCartProduct(int id,string UserName)
         {
-            //Product pro = (from c in db.Products
-             //              where c.P_id == id
-               //            select c).FirstOrDefault();
-            Product p = new Product();
-            p.P_id = id;
-            //p.UserName=UserName;
-            db.Products.Add(p);
+            Cart c = new Cart();
+            c.P_id = id;
+            c.UserName = UserName;
+            db.Carts.Add(c);
             Save();
         }
+        public void AddOrderProduct(int id, string UserName)
+        {
+            OrderH c = new OrderH();
+            c.P_id = id;
+            c.UserName = UserName;
+            db.OrderHs.Add(c);
+            Save();
+
+        }
+        public string DeleteCartProductById(int id)
+        {
+            Cart delcomp = (from c in db.Carts
+                               where c.P_id == id
+                               select c).FirstOrDefault();
+            int f_id = delcomp.A_id;
+            var car = db.Carts.Find(f_id);
+            if (car != null)
+            {
+                db.Carts.Remove(car);
+                Save();
+                return "Removed Sucessfully";
+            }
+            else
+                throw new ArgumentException("Customer not found");
+        }
+
         public string DeleteProductById(int id)
         {
             Company delcomp= (from c in db.Companies
