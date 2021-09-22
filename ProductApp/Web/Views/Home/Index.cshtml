@@ -1,12 +1,29 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    #android img {
+        width: 100%;
+    }
 
-<div class="jumbotron">
+    #video1 {
+        width: 100%;
+    }
+</style>
+
+<div>
     <h1>Mobile Store Application</h1>
 </div>
-@if (Session["UserName"] != null)
-{
-<text>
-    Welcome @Session["UserName"].ToString() </text> 
-}
+<hr />
+    <div id="android" onmouseover="play()">
+        <video id="video1">
+            <source src="/Video/iphone.mp4" type="video/mp4">
+        </video>
+    </div>
+<script>
+    function play() {
+        var videos = document.getElementById('video1');
+        console.log(videos);
+        videos.play()
+    }
+</script>
