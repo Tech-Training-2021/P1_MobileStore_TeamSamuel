@@ -3,12 +3,26 @@
 @{
     ViewBag.Title = "GetProductById";
 }
+<style>
+    dl {
+        display: grid;
+        grid-template-columns: max-content auto;
+    }
 
+    dt {
+        grid-column-start: 1;
+    }
+
+    dd {
+        margin-left: 10px;
+        grid-column-start: 2;
+    }
+</style>
 <h2>Product</h2>
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.P_id)
         </dt>
@@ -17,6 +31,21 @@
             @Html.DisplayFor(model => model.P_id)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.M_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_Name)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Ram)
         </dt>
@@ -47,22 +76,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.C_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.C_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.M_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.M_Name)
         </dd>
 
         <dt>

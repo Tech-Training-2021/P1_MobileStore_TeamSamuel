@@ -3,12 +3,26 @@
 @{
     ViewBag.Title = "profile";
 }
+<style>
+    dl {
+        display: grid;
+        grid-template-columns: max-content auto;
+    }
 
+    dt {
+        grid-column-start: 1;
+    }
+
+    dd {
+        margin-left:10px;
+        grid-column-start: 2;
+    }
+</style>
 <h2>Profile</h2>
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.F_Name)
         </dt>
