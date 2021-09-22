@@ -1,7 +1,7 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "GetCartProducts";
+    ViewBag.Title = "BuyAllCart";
 }
 
 <h2>All Cart Products</h2>
@@ -10,32 +10,22 @@
         <tr style="background-color:skyblue">
             <th>Company Name</th>
             <th>Mobile Name</th>
-            <th>Ram</th>
-            <th>Storage</th>
-            <th>Color</th>
             <th>Price</th>
-            <th>Location</th>
-            <th>Store Name</th>
         </tr>
     </thead>
     <tbody>
+        @{int tp = 0;}
         @foreach (var products in Model)
         {
+            tp += products.Price;
             <tr>
                 <th scope="row">@products.C_Name</th>
                 <td>@products.M_Name</td>
-                <td>@products.Ram</td>
-                <td>@products.Storage</td>
-                <td>@products.Color</td>
                 <td>@products.Price</td>
-                <td>@products.Locations</td>
-                <td>@products.Store</td>
-                <td>@Html.ActionLink("Details", "GetProductById", new { id = products.P_id })</td>
-                <td>@Html.ActionLink("Buy Now", "BuyProductById", new { id = products.P_id })</td>
-                <td>@Html.ActionLink("Delete", "DeleteCartProductById", new { id = products.P_id })</td>
 
             </tr>
         }
+        <tr><td>Total Price : @tp</td></tr>
     </tbody>
 </table>
 @{List<string> list = new List<string>(); }
@@ -46,4 +36,5 @@
     list.Add("-");
 }
 @{var myString = String.Join(String.Empty, list.ToArray()); }
-@Html.ActionLink("Buy All", "BuyAllCart", new { id = myString })
+<div>@Html.ActionLink("Pay", "PayAllCart", new { id = myString })</div>
+<div>@Html.ActionLink("Cancel", "GetCartProducts")</div>

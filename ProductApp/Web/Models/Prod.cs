@@ -14,27 +14,35 @@ namespace Web.Models
         public int P_id { get; set; }
 
         [Required(ErrorMessage = "Company Name cannot be blank")]
+        [DisplayName("Company Name")]
         public string C_Name { get; set; }
 
         [Required(ErrorMessage = "Mobile Name cannot be blank")]
+        [DisplayName("Mobile Name")]
         public string M_Name { get; set; }
 
         [Required(ErrorMessage = "Ram cannot be blank")]
+        [DisplayName("Ram")]
         public int Ram { get; set; }
 
         [Required(ErrorMessage = "Storage cannot be blank")]
+        [DisplayName("Storage")]
         public int Storage { get; set; }
 
         [Required(ErrorMessage = "Color cannot be blank")]
+        [DisplayName("Color")]
         public string Color { get; set; }
 
         [Required(ErrorMessage = "Price cannot be blank")]
+        [DisplayName("Price")]
         public int Price { get; set; }
 
         [Required(ErrorMessage = "Location cannot be blank")]
+        [DisplayName("Location")]
         public string Locations { get; set; }
 
         [Required(ErrorMessage = "Store Name cannot be blank")]
+        [DisplayName("Store")]
         public string Store { get; set; }
     }
     public class Orderhis

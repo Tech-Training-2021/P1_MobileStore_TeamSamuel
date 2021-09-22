@@ -39,6 +39,17 @@ namespace Web.Controllers
             }
             return View(data);
         }
+        public ActionResult GetUserOrderHProducts()
+        {
+            string UserName = Session["UserName"].ToString();
+            var products = repo.GetUserOrderHProducts(UserName);
+            var data = new List<Web.Models.Orderhis>();
+            foreach (var c in products)
+            {
+                data.Add(ProdMapper.Map(c));
+            }
+            return View(data);
+        }
         public ActionResult GetCartProducts()
         {
             string UserName = Session["UserName"].ToString();
@@ -114,6 +125,43 @@ namespace Web.Controllers
                 return HttpNotFound();
             return View(ProdMapper.Map(product));
         }
+        public ActionResult BuyAllCart(string id)
+        {
+            id=id.TrimEnd('-');
+            List<string> result = id.Split('-').ToList();
+            List<int> ids=result.Select(int.Parse).ToList();
+
+           if (ids.Count == 0)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var data = new List<Web.Models.Prod>();
+            for (int i=0;i<ids.Count;i++)
+            {
+                var product = repo.GetProductById(ids[i]);
+                if (product == null)
+                    return HttpNotFound();
+                data.Add(ProdMapper.Map(product));
+                
+            }
+            return View(data);
+
+        }
+        public ActionResult PayAllCart(string id)
+        {
+            id = id.TrimEnd('-');
+            List<string> result = id.Split('-').ToList();
+            List<int> ids = result.Select(int.Parse).ToList();
+            string UserName = Session["UserName"].ToString();
+            if (ids.Count == 0)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            for (int i = 0; i < ids.Count; i++)
+            {
+                repo.AddOrderProduct(ids[i], UserName);
+                repo.DeleteCartProductById(ids[i]);
+
+            }
+            return RedirectToAction("GetProductsCust");
+
+        }
         public ActionResult Pay(int id)
         {
             string UserName = Session["UserName"].ToString();
@@ -124,8 +172,16 @@ namespace Web.Controllers
         public ActionResult AddCartProduct(int id)
         {
             string UserName = Session["UserName"].ToString();
-            repo.AddCartProduct(id,UserName);
-            return RedirectToAction("GetProductsCust");
+            bool status=repo.AddCartProduct(id,UserName);
+            if (status)
+            {
+                return RedirectToAction("GetProductsCust");
+                //Response.Write("<script>alert('Added to the Cart')</script>");
+            }
+            else
+            {
+                return RedirectToAction("GetProductsCust");
+            }
         }
     }
 }

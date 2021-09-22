@@ -28,6 +28,13 @@ namespace Data
         {
             return db.OrderHs.OrderBy(a => a.UserName).ToList();
         }
+        public IEnumerable<OrderH> GetUserOrderHProducts(string UserName)
+        {
+            var pids = (from c in db.OrderHs
+                        where c.UserName == UserName
+                        select c).ToList();
+            return pids;
+        }
         public IEnumerable<Product> GetCartProducts(string UserName)
         {
             var pids = (from c in db.Carts
@@ -79,13 +86,22 @@ namespace Data
             db.SaveChanges();
 
         }
-        public void AddCartProduct(int id,string UserName)
+        public bool AddCartProduct(int id,string UserName)
         {
-            Cart c = new Cart();
-            c.P_id = id;
-            c.UserName = UserName;
-            db.Carts.Add(c);
-            Save();
+            bool status = false;
+            var pids = (from c in db.Carts
+                        where c.UserName == UserName && c.P_id==id
+                        select c.P_id).ToList();
+            if (pids.Count == 0)
+            {
+                Cart co = new Cart();
+                co.P_id = id;
+                co.UserName = UserName;
+                db.Carts.Add(co);
+                Save();
+                status = true;
+            }
+            return status;
         }
         public void AddOrderProduct(int id, string UserName)
         {
@@ -94,7 +110,9 @@ namespace Data
             c.UserName = UserName;
             db.OrderHs.Add(c);
             Save();
-
+            Product p = db.Products.SingleOrDefault(f => f.P_id == id);
+            p.Statuss = false;
+            Save();
         }
         public string DeleteCartProductById(int id)
         {

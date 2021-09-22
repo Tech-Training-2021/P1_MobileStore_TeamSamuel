@@ -1,7 +1,7 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "GetOrderHProducts";
+    ViewBag.Title = "GetUserOrderHProducts";
 }
 
 <h2>Order History</h2>
@@ -9,7 +9,6 @@
 <table  class="table table-bordered">
     <thead>
         <tr style="background-color:skyblue">
-            <th>User Name</th>
             <th>Company Name</th>
             <th>Mobile Name</th>
             <th>Ram</th>
@@ -23,18 +22,17 @@
     <tbody>
         @foreach (var products in Model)
         {
-        <tr>
-            <th scope="row">@products.UserName</th>
-            <td>@products.C_Name</td>
-            <td>@products.M_Name</td>
-            <td>@products.Ram</td>
-            <td>@products.Storage</td>
-            <td>@products.Color</td>
-            <td>@products.Price</td>
-            <td>@products.Locations</td>
-            <td>@products.Store</td>
+            <tr>
+                <th scope="row">@products.C_Name</th>
+                <td>@products.M_Name</td>
+                <td>@products.Ram</td>
+                <td>@products.Storage</td>
+                <td>@products.Color</td>
+                <td>@products.Price</td>
+                <td>@products.Locations</td>
+                <td>@products.Store</td>
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>

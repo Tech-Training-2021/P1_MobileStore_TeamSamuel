@@ -14,10 +14,12 @@ namespace Data
     {
         IEnumerable<Product> GetProducts();
         IEnumerable<OrderH> GetOrderHProducts();
+        IEnumerable<OrderH> GetUserOrderHProducts(string UserName);
+
         IEnumerable<Product> GetCartProducts(string UserName);
         Product GetProductById(int? P_id);
         void AddProduct(Product produc,int c_id,int s_id);
-        void AddCartProduct(int id,string UserName);
+        bool AddCartProduct(int id,string UserName);
         void AddOrderProduct(int id, string UserName);
 
         int AddCompany(Company comp);

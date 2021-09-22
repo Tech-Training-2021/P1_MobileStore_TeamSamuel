@@ -6,6 +6,27 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .userN {
+            margin-right:0;
+            margin-left:260px;
+            float: right;
+            color: white;
+        }
+
+        .Session {
+            float: right;
+            right: 0px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .btn_logout {
+            margin-left: 5px;
+            background-color:forestgreen;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,7 +40,7 @@
                 @Html.ActionLink("Mobile Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="color:white">
                     @if (Session["UserName"] != null)
                     {
                         if (Session["UserName"].ToString() == "Admin")
@@ -30,11 +51,11 @@
                             <li>@Html.ActionLink("View Products", "GetProducts", "Prod")</li>
                             <li>@Html.ActionLink("View order History", "GetOrderHProducts", "Prod")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>
+                            <li Class="userN">
                                 @Html.ActionLink(
-                                     $"{Session["UserName"]}","Index","Home")
+                                     $"{Session["UserName"]}", "Index", "Home")
                             </li>
-                            <li>@Html.ActionLink("LogOut", "userLogout", "Product")</li>
+                            <li Class="btn_logout">@Html.ActionLink("LogOut", "userLogout", "Product")</li>
                         }
                         else
                         {
@@ -43,11 +64,12 @@
                             <li>@Html.ActionLink("Profile", "profile", "Product")</li>
                             <li>@Html.ActionLink("Book order", "GetProductsCust", "Prod")</li>
                             <li>@Html.ActionLink("View Cart", "GetCartProducts", "Prod")</li>
+                            <li>@Html.ActionLink("Order History", "GetUserOrderHProducts", "Prod")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>
-                                @Html.ActionLink($"{Session["UserName"]}","Index","Home")
+                            <li Class="userN">
+                                @Html.ActionLink($"{Session["UserName"]}", "Index", "Home")
                             </li>
-                            <li>@Html.ActionLink("LogOut", "userLogout", "Product")</li>
+                            <li Class="btn_logout">@Html.ActionLink("LogOut", "userLogout", "Product")</li>
                         }
                     }
                     else

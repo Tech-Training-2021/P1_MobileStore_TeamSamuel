@@ -191,6 +191,8 @@
     <Content Include="Views\Prod\GetCartProducts.cshtml" />
     <Content Include="Views\Prod\BuyProductById.cshtml" />
     <Content Include="Views\Prod\GetOrderHProducts.cshtml" />
+    <Content Include="Views\Prod\GetUserOrderHProducts.cshtml" />
+    <Content Include="Views\Prod\BuyAllCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
