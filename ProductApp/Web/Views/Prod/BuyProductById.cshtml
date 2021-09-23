@@ -1,61 +1,71 @@
-﻿@model Web.Models.Prod
+﻿@if (Session["UserName"] != null)
+{
+    @model Web.Models.Prod
 
-@{
-    ViewBag.Title = "GetProductById";
+    {
+        ViewBag.Title = "GetProductById";
+    }
+    <style>
+        dl {
+            font-size: 16px;
+            display: grid;
+            grid-template-columns: max-content auto;
+        }
+
+        dt {
+            grid-column-start: 1;
+        }
+
+        dd {
+            margin-left: 10px;
+            grid-column-start: 2;
+        }
+    </style>
+    <h2>Cart Product</h2>
+
+    <div>
+        <hr />
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.P_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.P_id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.C_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.M_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.M_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+
+        </dl>
+    </div>
+    <div style="font-size: 16px;">
+        @Html.ActionLink("Pay", "Pay", new { id = Model.P_id }) |
+        @Html.ActionLink("Cancel", "GetCartProducts")
+    </div>
 }
-<style>
-    dl {
-        display: grid;
-        grid-template-columns: max-content auto;
-    }
-
-    dt {
-        grid-column-start: 1;
-    }
-
-    dd {
-        margin-left: 10px;
-        grid-column-start: 2;
-    }
-</style>
-<h2>Cart Product</h2>
-
-<div>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.P_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.P_id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.C_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.C_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.M_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.M_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-
-    </dl>
-</div>
-<div>@Html.ActionLink("Pay", "Pay", new { id = Model.P_id })</div>
-<div>@Html.ActionLink("Cancel", "GetCartProducts")</div>
+else
+{
+    Response.Redirect("../Home/Index");
+}

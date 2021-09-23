@@ -1,79 +1,87 @@
-﻿@model Web.Models.Customer
+﻿@if (Session["UserName"] != null)
+{
+    @model Web.Models.Customer
 
-@{
-    ViewBag.Title = "profile";
+    {
+        ViewBag.Title = "profile";
+    }
+    <style>
+        dl {
+            font-size: 16px;
+            display: grid;
+            grid-template-columns: max-content auto;
+        }
+
+        dt {
+            grid-column-start: 1;
+        }
+
+        dd {
+            margin-left: 10px;
+            grid-column-start: 2;
+        }
+    </style>
+    <h2>Profile</h2>
+
+    <div>
+        <hr />
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.F_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.F_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.L_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.L_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dob)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dob)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mobile)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Locations)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Locations)
+            </dd>
+
+        </dl>
+    </div>
+    <p style="font-size: 16px;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to Home", "Index", "Home")
+    </p>
 }
-<style>
-    dl {
-        display: grid;
-        grid-template-columns: max-content auto;
-    }
-
-    dt {
-        grid-column-start: 1;
-    }
-
-    dd {
-        margin-left:10px;
-        grid-column-start: 2;
-    }
-</style>
-<h2>Profile</h2>
-
-<div>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.F_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.F_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.L_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.L_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dob)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mobile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mobile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Locations)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Locations)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index", "Home")
-</p>
+else
+{
+    Response.Redirect("../Home/Index");
+}

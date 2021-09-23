@@ -1,75 +1,93 @@
-﻿@model dynamic
+﻿@if (Session["UserName"] != null)
+{
+    @model dynamic
 
-@{
-    ViewBag.Title = "GetProducts";
-}
-<style>
-    #myInput {
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        width: 100%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
+    {
+        ViewBag.Title = "GetProducts";
     }
-</style>
-
-<h2>All Products</h2>
-@Html.ActionLink("Add new Product", "Createp", "Prod")<br /><br />
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for company name.." title="Type in a name">
-<table  class="table table-bordered" id="myTable">
-    <thead>
-        <tr style="background-color:skyblue">
-            <th>Company Name</th>
-            <th>Mobile Name</th>
-            <th>Ram</th>
-            <th>Storage</th>
-            <th>Color</th>
-            <th>Price</th>
-            <th>Location</th>
-            <th>Store Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var products in Model)
-        {
-        <tr>
-            <td scope="row">@products.C_Name</td>
-            <td>@products.M_Name</td>
-            <td>@products.Ram</td>
-            <td>@products.Storage</td>
-            <td>@products.Color</td>
-            <td>@products.Price</td>
-            <td>@products.Locations</td>
-            <td>@products.Store</td>
-            <td>@Html.ActionLink("Details", "GetProductById", new { id = products.P_id })</td>
-            <td>@Html.ActionLink("Delete", "DeleteProductById", new { id = products.P_id })</td>
-
-        </tr>
+    <style>
+        #myInput {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
         }
-    </tbody>
-</table>
-<script>
+    </style>
 
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+    <h2>All Products</h2>
+    @Html.ActionLink("Add new Product", "Createp", "Prod")
+    <br />
+    <br />
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for company name.." title="Type in a name">
+    <table class="table table-bordered" id="myTable">
+        <thead>
+            <tr style="background-color:skyblue">
+                <th>Company Name</th>
+                <th>Mobile Name</th>
+                <th>Ram</th>
+                <th>Storage</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Store Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var products in Model)
+            {
+                <tr class="prod">
+                    <td scope="row">@products.C_Name</td>
+                    <td>@products.M_Name</td>
+                    <td>@products.Ram</td>
+                    <td>@products.Storage</td>
+                    <td>@products.Color</td>
+                    <td>@products.Price</td>
+                    <td>@products.Locations</td>
+                    <td>@products.Store</td>
+                    <td>@Html.ActionLink("Details", "GetProductById", new { id = products.P_id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteProductById", new { id = products.P_id })</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h3 id="hidd" hidden style="text-align:center;">No product found</h3>
+    <script>
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue, id, cl, c = 0;
+            input = document.getElementById("myInput");
+            id = document.getElementById("hidd");
+            cl = document.getElementsByClassName("prod");
+            cl = cl.length;
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        id.style.display = "none";
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                        c += 1;
+                    }
                 }
             }
+            if (c == cl) {
+                id.style.display = "block";
+            }
         }
-    }
-</script>
+    </script>
+}
+else
+{
+    Response.Redirect("../Home/Index");
+}

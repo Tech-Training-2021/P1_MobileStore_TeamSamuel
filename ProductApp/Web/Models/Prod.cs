@@ -11,6 +11,7 @@ namespace Web.Models
     public class Prod
     {
         [HiddenInput]
+        [DisplayName("Id")]
         public int P_id { get; set; }
 
         [Required(ErrorMessage = "Company Name cannot be blank")]

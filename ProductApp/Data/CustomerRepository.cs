@@ -60,6 +60,23 @@ namespace Data
 
             return cust;
         }
+        public bool CustomerFpass(string Username,string Password,string email)
+        {
+            Login p = db.Logins.SingleOrDefault(f => f.UserName == Username);
+            int? id = p.C_Id;
+            Customer Checkcust = (from c in db.Customers
+                               where c.Id==id
+                               select c).FirstOrDefault();
+            if (p != null && Checkcust.Email == email)
+            {
+                p.Password = Password;
+                Save();
+                return true;
+            }
+            else
+                return false;
+        }
+
         public bool CustomerLogin(Login customer)
         {
             Login Checkcust = (from c in db.Logins

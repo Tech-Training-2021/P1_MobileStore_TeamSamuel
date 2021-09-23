@@ -21,6 +21,8 @@ namespace Data
         Customer UpdateCustomer(Customer cust);
         int AddCustomer(Customer customer);
         bool CustomerLogin(Login customer);
+        bool CustomerFpass(string Username,string Password,string email);
+
         void AddCustomerL(Login lcustomer,int id);
         void Save();
     }

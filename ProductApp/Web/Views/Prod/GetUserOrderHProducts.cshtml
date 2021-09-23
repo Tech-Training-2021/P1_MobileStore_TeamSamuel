@@ -1,38 +1,45 @@
-﻿@model dynamic
+﻿@if (Session["UserName"] != null)
+{
+    @model dynamic
 
-@{
-    ViewBag.Title = "GetUserOrderHProducts";
-}
+    {
+        ViewBag.Title = "GetUserOrderHProducts";
+    }
 
-<h2>Order History</h2>
+    <h2>Order History</h2>
 
-<table  class="table table-bordered">
-    <thead>
-        <tr style="background-color:skyblue">
-            <th>Company Name</th>
-            <th>Mobile Name</th>
-            <th>Ram</th>
-            <th>Storage</th>
-            <th>Color</th>
-            <th>Price</th>
-            <th>Location</th>
-            <th>Store Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var products in Model)
-        {
-            <tr>
-                <th scope="row">@products.C_Name</th>
-                <td>@products.M_Name</td>
-                <td>@products.Ram</td>
-                <td>@products.Storage</td>
-                <td>@products.Color</td>
-                <td>@products.Price</td>
-                <td>@products.Locations</td>
-                <td>@products.Store</td>
-
+    <table class="table table-bordered">
+        <thead>
+            <tr style="background-color:skyblue">
+                <th>Company Name</th>
+                <th>Mobile Name</th>
+                <th>Ram</th>
+                <th>Storage</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Store Name</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var products in Model)
+            {
+                <tr>
+                    <th scope="row">@products.C_Name</th>
+                    <td>@products.M_Name</td>
+                    <td>@products.Ram</td>
+                    <td>@products.Storage</td>
+                    <td>@products.Color</td>
+                    <td>@products.Price</td>
+                    <td>@products.Locations</td>
+                    <td>@products.Store</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    Response.Redirect("../Home/Index");
+}

@@ -1,40 +1,47 @@
-﻿@model dynamic
-
-@{
-    ViewBag.Title = "BuyAllCart";
-}
-
-<h2>All Cart Products</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr style="background-color:skyblue">
-            <th>Company Name</th>
-            <th>Mobile Name</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{int tp = 0;}
-        @foreach (var products in Model)
-        {
-            tp += products.Price;
-            <tr>
-                <th scope="row">@products.C_Name</th>
-                <td>@products.M_Name</td>
-                <td>@products.Price</td>
-
-            </tr>
-        }
-        <tr><td>Total Price : @tp</td></tr>
-    </tbody>
-</table>
-@{List<string> list = new List<string>(); }
-@foreach (var products in Model)
+﻿@if (Session["UserName"] != null)
 {
-    var temp = products.P_id.ToString();
-    list.Add(temp);
-    list.Add("-");
+    @model dynamic
+
+    {
+        ViewBag.Title = "BuyAllCart";
+    }
+
+    <h2>All Cart Products</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr style="background-color:skyblue">
+                <th>Company Name</th>
+                <th>Mobile Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int tp = 0;}
+            @foreach (var products in Model)
+            {
+                tp += products.Price;
+                <tr>
+                    <th scope="row">@products.C_Name</th>
+                    <td>@products.M_Name</td>
+                    <td>@products.Price</td>
+
+                </tr>
+            }
+            <tr><td>Total Price : @tp</td></tr>
+        </tbody>
+    </table>
+    List<string> list = new List<string>(); 
+    foreach (var products in Model)
+    {
+        var temp = products.P_id.ToString();
+        list.Add(temp);
+        list.Add("-");
+    }
+    var myString = String.Join(String.Empty, list.ToArray()); 
+    <div>@Html.ActionLink("Pay", "PayAllCart", new { id = myString })</div>
+    <div>@Html.ActionLink("Cancel", "GetCartProducts")</div>
 }
-@{var myString = String.Join(String.Empty, list.ToArray()); }
-<div>@Html.ActionLink("Pay", "PayAllCart", new { id = myString })</div>
-<div>@Html.ActionLink("Cancel", "GetCartProducts")</div>
+else
+{
+    Response.Redirect("../Home/Index");
+}

@@ -91,7 +91,29 @@ namespace Web.Controllers
 
             return View(customer);
         }
+        public ActionResult Fpass()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Fpass(CustomerViewModel customer)
+        {
+                string email = customer.Email;
+                string Username = customer.Username;
+                string Password = customer.Password;
+                bool flag = repo.CustomerFpass(Username, Password,email);
+                if (flag == true)
+                {
+                    return Content("<script language='javascript' type='text/javascript'>alert('Password reset successfully');</script>");
+                    //return RedirectToAction("Loginn");
+            }
+                else
+                {
+                    return Content("<script language='javascript' type='text/javascript'>alert('Username or Email is incorrect');</script>");
+                    //return RedirectToAction("Fpass");
+            }
 
+        }
 
         public ActionResult Loginn()
         {
