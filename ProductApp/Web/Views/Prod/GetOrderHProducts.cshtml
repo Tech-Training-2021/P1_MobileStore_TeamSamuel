@@ -3,10 +3,20 @@
 @{
     ViewBag.Title = "GetOrderHProducts";
 }
-
+<style>
+    #myInput {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
 <h2>Order History</h2>
-
-<table  class="table table-bordered">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for order location.." title="Type in a name">
+<table  class="table table-bordered"  id="myTable">
     <thead>
         <tr style="background-color:skyblue">
             <th>User Name</th>
@@ -24,7 +34,7 @@
         @foreach (var products in Model)
         {
         <tr>
-            <th scope="row">@products.UserName</th>
+            <td scope="row">@products.UserName</td>
             <td>@products.C_Name</td>
             <td>@products.M_Name</td>
             <td>@products.Ram</td>
@@ -38,3 +48,24 @@
         }
     </tbody>
 </table>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

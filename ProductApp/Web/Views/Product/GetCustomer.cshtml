@@ -3,11 +3,22 @@
 @{
     ViewBag.Title = "GetCustomer";
 }
+<style>
+    #myInput {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
 
 <h2>All Customers</h2>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-@Html.ActionLink("Add new Customer", "Createn", "Product")
-<table class="table table-bordered">
+@Html.ActionLink("Add new Customer", "Createn", "Product")<br /><br />
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for First Name.." title="Type in a name">
+<table class="table table-bordered" id="myTable">
     <thead>
         <tr style="background-color:skyblue">
             <th>Id</th>
@@ -25,19 +36,39 @@
     <tbody>
         @foreach (var customers in Model)
         {
-        <tr>
-            <th scope="row">@customers.Id</th>
-            <td>@customers.F_Name</td>
-            <td>@customers.L_Name</td>
-            <td>@customers.Dob</td>
-            <td>@customers.Mobile</td>
-            <td>@customers.Email</td>
-            <td>@customers.Locations</td>
-            <td>@Html.ActionLink("Details", "GetCustomerById", new { id = customers.Id })</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { id = customers.Id })</td>
-            <td>@Html.ActionLink("Delete", "DeleteCustomerById", new { id = customers.Id })</td>
+            <tr>
+                <th scope="row">@customers.Id</th>
+                <td>@customers.F_Name</td>
+                <td>@customers.L_Name</td>
+                <td>@customers.Dob</td>
+                <td>@customers.Mobile</td>
+                <td>@customers.Email</td>
+                <td>@customers.Locations</td>
+                <td>@Html.ActionLink("Details", "GetCustomerById", new { id = customers.Id })</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = customers.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteCustomerById", new { id = customers.Id })</td>
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
